@@ -1,39 +1,7 @@
-# Used for local development. The `app` service runs the Vite dev server with
-# hot module replacement. The `portfolio` service mirrors the production Nginx
-# image so you can test the built output locally before deploying.
-#
-# Usage:
-#   docker compose up app        → Vite dev server on http://localhost:5173
-#   docker compose up portfolio  → Production-like Nginx on http://localhost:8080
-#   docker compose build portfolio  → Rebuild the production image
-
-version: "3.9"
-
 services:
-  # Dev server with hot reload — mounts source code so changes reflect instantly
-  app:
-    image: node:20-alpine
-    working_dir: /app
-    ports:
-      - "5173:5173"
-    volumes:
-      - .:/app
-      # An anonymous volume for node_modules prevents the host's node_modules
-      # from shadowing the container's installed dependencies.
-      - /app/node_modules
-    command: sh -c "npm ci && npm run dev"
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true  # needed for file watching on Windows/Mac
-    stdin_open: true
-    tty: true
-
-  # Production-like Nginx serving the built static site
-  portfolio:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  web:
+    build: .
+    container_name: resume-site
     ports:
       - "8080:80"
-    environment:
-      - NODE_ENV=production
+    restart: unless-stopped
