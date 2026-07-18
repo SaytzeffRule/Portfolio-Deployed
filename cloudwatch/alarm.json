@@ -1,0 +1,22 @@
+{
+  "AlarmName": "portfolio-cpu-high",
+  "AlarmDescription": "Triggers when CPU usage exceeds 80% for 5 consecutive minutes",
+  "Namespace": "PortfolioApp",
+  "MetricName": "cpu_usage_user",
+  "Statistic": "Average",
+  "Period": 300,
+  "EvaluationPeriods": 1,
+  "Threshold": 80.0,
+  "ComparisonOperator": "GreaterThanThreshold",
+  "TreatMissingData": "notBreaching",
+  "ActionsEnabled": true,
+  "AlarmActions": [
+    "arn:aws:sns:us-east-1:YOUR_ACCOUNT_ID:portfolio-alerts"
+  ],
+  "Dimensions": [
+    {
+      "Name": "InstanceId",
+      "Value": "i-1234567890abcdef0"
+    }
+  ]
+}

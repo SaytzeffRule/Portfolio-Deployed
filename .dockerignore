@@ -1,0 +1,27 @@
+# Prevent node_modules and local build artifacts from being copied into the Docker build context.
+# The Dockerfile runs `npm ci` inside the container, so host node_modules would only cause issues.
+node_modules
+npm-debug.log
+
+# Do not copy environment files — secrets are injected at runtime, not build time.
+.env
+.env.local
+.env.production
+
+# Build output should not be part of the build context (it is produced inside the container).
+dist
+build
+
+# Version control and IDE files are unnecessary in the image.
+.git
+.gitignore
+.gitattributes
+.github
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db
