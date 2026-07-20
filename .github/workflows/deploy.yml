@@ -25,69 +25,49 @@
 #   SSH_PRIVATE_KEY      — Contents of the private key (PEM) for EC2 access
 # =============================================================================
 
-name: Deploy to EC2
+name: Deploy Portfolio
 
 on:
   push:
-    branches: [main]
-
-env:
-  DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/portfolio
+    branches:
+      - main
 
 jobs:
-  build-and-push:
-    name: Build & Push Docker Image
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Log in to Docker Hub
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Generate image tags
-        id: tags
-        run: echo "sha=${GITHUB_SHA::7}" >> "${GITHUB_OUTPUT}"
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/resume-site:latest .
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: |
-            ${{ env.DOCKER_IMAGE }}:${{ steps.tags.outputs.sha }}
-            ${{ env.DOCKER_IMAGE }}:latest
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/resume-site:latest
 
-  deploy:
-    name: Deploy to EC2
-    needs: build-and-push
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.2.0
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            set -e
+            docker pull ${{ secrets.DOCKER_USERNAME }}/resume-site:latest
 
-            echo "=== Pulling latest image ==="
-            docker pull ${{ secrets.DOCKER_USERNAME }}/portfolio:latest
+            docker stop resume-site || true
+            docker rm resume-site || true
 
-            echo "=== Restarting container ==="
-            cd ~/portfolio
-            docker compose up -d --force-recreate --remove-orphans
-
-            echo "=== Pruning unused images ==="
-            docker image prune -af --filter "until=24h"
-
-            echo "=== Deployment complete ==="
+            docker run -d \
+              --name resume-site \
+              -p 80:80 \
+              --restart unless-stopped \
+              ${{ secrets.DOCKER_USERNAME }}/resume-site:latest
