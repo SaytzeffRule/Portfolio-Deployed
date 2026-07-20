@@ -1,31 +1,32 @@
 const PROJECTS = [
   {
-    title: 'Project One',
+    title: 'Email Classification & Summarization',
     description:
-      'TODO: describe what this project does, the problem it solves, and the tech stack used. Keep it to 2-3 sentences.',
-    tech: ['React', 'Node.js', 'PostgreSQL'],
+      'AI-powered system for intelligent email classification and prioritization. Utilizes LLMs to summarize threads and highlight actionable tasks, leveraging vector databases to provide context-aware summarization and task extraction.',
+    tech: ['LLMs', 'Vector DB', 'Python', 'Hugging Face'],
     links: {
-      github: 'https://github.com/TODO/project-one', // TODO: replace
-      live: 'https://project-one.example.com', // TODO: replace or remove
+      github: 'https://huggingface.co/spaces/abhinavgautam01/my-env',
+      live: 'https://huggingface.co/spaces/abhinavgautam01/my-env',
     },
   },
   {
-    title: 'Project Two',
+    title: 'GPU Budget Negotiation Arena',
     description:
-      'TODO: describe what this project does, the problem it solves, and the tech stack used.',
-    tech: ['Python', 'FastAPI', 'Docker', 'AWS'],
+      'An interactive multi-agent negotiation platform where AI agents bargain for limited GPU resources under budget constraints. Developed using LLMs to simulate complex trade-offs and resource allocation strategies while evaluating agent performance through custom evaluation metrics.',
+    tech: ['LLMs', 'Multi-Agent', 'Python', 'Hugging Face'],
     links: {
-      github: 'https://github.com/TODO/project-two', // TODO: replace
+      github: 'https://huggingface.co/spaces/abhinavgautam01/gpu-budget-negotiation-arena',
+      live: 'https://huggingface.co/spaces/abhinavgautam01/gpu-budget-negotiation-arena',
     },
   },
   {
-    title: 'Project Three',
+    title: 'Socratic AI',
     description:
-      'TODO: describe what this project does, the problem it solves, and the tech stack used.',
-    tech: ['TypeScript', 'Next.js', 'MongoDB'],
+      'AI-powered learning platform facilitating inquiry-based interaction and deep conceptual understanding using modern web stacks. Employs Retrieval-Augmented Generation (RAG) to offer personalized tutoring and context-driven feedback.',
+    tech: ['RAG', 'Next.js', 'TypeScript', 'AI'],
     links: {
-      github: 'https://github.com/TODO/project-three', // TODO: replace
-      live: 'https://project-three.example.com', // TODO: replace or remove
+      github: 'https://socratic-ai-web-one.vercel.app/',
+      live: 'https://socratic-ai-web-one.vercel.app/',
     },
   },
 ];

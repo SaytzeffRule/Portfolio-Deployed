@@ -10,16 +10,14 @@ function About() {
         <div className="grid gap-8 md:grid-cols-3">
           <div className="prose prose-gray max-w-none dark:prose-invert md:col-span-2">
             <p className="text-gray-600 dark:text-gray-400">
-              {/* TODO: replace with your bio - 2-3 paragraphs about your background,
-                  what you do, what you're passionate about, etc. */}
-              I'm a passionate software engineer with experience building modern web
-              applications and distributed systems. I enjoy solving complex problems
-              and delivering clean, maintainable code.
+              I'm an AI Engineer and Full-Stack Developer passionate about building intelligent
+              systems that solve real-world problems. My work spans LLM-powered applications,
+              multi-agent systems, and cloud-native infrastructure.
             </p>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              Currently focused on full-stack development with React, Node.js, and
-              cloud-native technologies. When I'm not coding, you'll find me
-              exploring new tools and contributing to open-source projects.
+              I specialize in bridging the gap between AI research and production engineering —
+              from deploying RAG-based tutoring platforms to building multi-agent negotiation
+              arenas. I'm always exploring new ways to combine modern web stacks with cutting-edge AI.
             </p>
           </div>
 

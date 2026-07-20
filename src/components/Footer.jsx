@@ -1,15 +1,15 @@
 const SOCIAL_LINKS = [
   {
     label: 'GitHub',
-    href: 'https://github.com/TODO', // TODO: replace with your GitHub URL
+    href: 'https://github.com/SaytzeffRule',
   },
   {
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/TODO', // TODO: replace with your LinkedIn URL
+    href: 'https://www.linkedin.com/in/akshit-sharma-0665b2246/',
   },
   {
     label: 'Email',
-    href: 'mailto:TODO@example.com', // TODO: replace with your email
+    href: 'mailto:akshitofficial001@gmail.com',
   },
 ];
 
@@ -20,7 +20,7 @@ function Footer() {
     <footer className="border-t border-gray-200 dark:border-gray-800">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 py-8 sm:flex-row sm:justify-between sm:px-6">
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          &copy; {year} {/* TODO: replace with your name */}. All rights reserved.
+          &copy; {year} Akshit Sharma. All rights reserved.
         </p>
         <div className="flex gap-4">
           {SOCIAL_LINKS.map((link) => (

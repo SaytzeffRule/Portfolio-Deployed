@@ -16,8 +16,7 @@ function Header({ darkMode, toggleDarkMode }) {
     <header className="fixed top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-gray-800 dark:bg-gray-950/80">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#hero" className="text-lg font-bold tracking-tight">
-          {/* TODO: replace with your name */}
-          Portfolio
+          Akshit Sharma
         </a>
 
         {/* Desktop nav */}

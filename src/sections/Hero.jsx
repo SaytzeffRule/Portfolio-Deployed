@@ -6,16 +6,13 @@ function Hero() {
           Hi, my name is
         </p>
         <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-6xl">
-          {/* TODO: replace with your name */}
-          Your Name
+          Akshit Sharma
         </h1>
         <h2 className="mb-6 text-2xl font-medium text-gray-500 dark:text-gray-400 sm:text-3xl">
-          {/* TODO: replace with your title */}
-          Full-Stack Developer &amp; DevOps Engineer
+          AI Engineer &amp; Full-Stack Developer
         </h2>
         <p className="mx-auto mb-8 max-w-xl text-gray-600 dark:text-gray-400">
-          {/* TODO: write a 1-2 sentence tagline about yourself */}
-          I build scalable applications and robust infrastructure.
+          Building AI-powered applications and intelligent systems that solve real-world problems.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a href="#projects" className="btn-primary">
